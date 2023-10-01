@@ -39,7 +39,7 @@ const DesktopNavigation =  ({links}:DesktopNavigationProps ) => {
           </div>
         </div>
       </nav>
-      <div className="py-4 bg-red-600">
+      <div className="hidden md:block py-4 bg-red-600">
         <nav className="container flex items-center justify-between mx-auto font-light text-white">
           {links.map((link) => (
             <Link href={link.href} key={link.href} className="relative">
