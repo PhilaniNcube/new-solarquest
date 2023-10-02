@@ -31,25 +31,26 @@ const ProductDetails = ({product}: {product:SolarPowerPackage}) => {
               <div className="grid grid-cols-1 @lg:grid-cols-2 gap-6">
                 <div className="w-full">
                   <h3 className="text-xl font-bold text-zinc-800">Power Generation</h3>
-                  <p className="text-sm text-zinc-500 font-medium">
+                  <p className="text-sm font-medium text-zinc-500">
                     {product.power_generation}
                   </p>
                 </div>
                 <div className="w-full">
                   <h3 className="text-xl font-bold text-zinc-800">Inverter</h3>
-                  <p className="text-sm text-zinc-500 font-medium">
+                  <p className="text-sm font-medium text-zinc-500">
                     {product.equipment_included.hybrid_inverter.name}
                   </p>
                 </div>
                 <div className="w-full">
                   <h3 className="text-xl font-bold text-zinc-800">Battery</h3>
-                  <p className="text-sm text-zinc-500 font-medium">
+                  <p className="text-sm font-medium text-zinc-700">
                     {product.equipment_included.strorage.name}
+                    <span className="ml-3 text-sm text-zinc-500">x {product.equipment_included.strorage.battery}</span>
                   </p>
                 </div>
                 <div className="w-full">
                   <h3 className="text-xl font-bold text-zinc-800">Solar Panels</h3>
-                  <p className="text-sm text-zinc-500 font-medium">
+                  <p className="text-sm font-medium text-zinc-500">
                     {product.equipment_included.solar_panels.quantity} Panels ({product.equipment_included.solar_panels.rating})
                   </p>
                 </div>
