@@ -42,7 +42,7 @@ const DesktopNavigation =  ({links}:DesktopNavigationProps ) => {
       <div className="hidden md:block py-4 bg-red-600">
         <nav className="container flex items-center justify-between mx-auto font-light text-white">
           {links.map((link) => (
-            <Link href={link.href} key={link.href} className="relative">
+            <Link href={link.href} key={link.href} className="relative text-sm">
               {pathname === link.href && (
                 <motion.span layoutId="underline" className="absolute bg-white left-0 right-0 top-full h-[1px]" />
               )}
