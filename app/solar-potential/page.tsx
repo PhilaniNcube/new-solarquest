@@ -1,4 +1,10 @@
+import HeroSection from "./_components/HeroSection";
+import SolarPotentialForm from "./_components/SolarPotentialForm";
+
 const SolarPotential = () => {
-  return <div>SolarPotential</div>;
+  return <main>
+    <HeroSection />
+    <SolarPotentialForm />
+  </main>;
 };
 export default SolarPotential;
