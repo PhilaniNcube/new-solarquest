@@ -6,9 +6,19 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import { getElectricityUsage } from "@/lib/solar";
 import { DataResponse, GeocodingResponse } from "@/types";
 import { Circle, CircleDashedIcon } from "lucide-react";
 import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import solarPanels from "@/lib/solar-panels";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const SolarPotentialForm = () => {
 
@@ -16,7 +26,19 @@ const SolarPotentialForm = () => {
 
   const [solarData, setSolarData] = useState<DataResponse | null>(null);
 
-  console.log(solarData);
+  const [electricityUsage, setElectricityUsage] = useState<{daily:number, monthly:number, yearly:number} | null>(null);
+
+  const [selectedSolarPanel, setSelectedSolarPanel] = useState<{
+    sku: string;
+    maxPower: number;
+    width: number;
+    height: number;
+    depth: number;
+    manufacturer: string;
+  } | null>(null);
+
+
+  console.log(selectedSolarPanel);
 
   const getSolarData = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -88,6 +110,13 @@ const SolarPotentialForm = () => {
                         console.log("Error: ", res.error.message);
                         throw new Error("Error: " + res.error.message + 'Your address may not yet be covered.' );
                       }
+
+                      //calculate the electricity usage
+                     const {daily, monthly, yearly} = getElectricityUsage(Number(monthlyBill));
+
+                     setElectricityUsage({daily, monthly, yearly});
+
+
 
                      setSolarData(solar);
 
@@ -204,12 +233,103 @@ const SolarPotentialForm = () => {
                       solarData.solarPotential.solarPanelConfigs[
                         solarData.solarPotential.solarPanelConfigs.length - 1
                       ].yearlyEnergyDcKwh
-                    }
-                     {" "}/year
+                    }{" "}
+                    /year
                   </span>
                 </div>
               </CardContent>
             </Card>
+          </div>
+          <Separator className="my-4" />
+          <h3 className="text-xl font-semibold">Electricyt Usage</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <span className="text-lg font-semibold">Daily Usage</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-semibold">
+                    Daily Consumption
+                  </span>
+                  <span className="text-sm font-semibold">
+                    {electricityUsage?.daily.toFixed(2)} kWh/day
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <span className="text-lg font-semibold">Monthly Usage</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-semibold">
+                    Monthly Consumption
+                  </span>
+                  <span className="text-sm font-semibold">
+                    {electricityUsage?.monthly.toFixed(2)} kWh/month
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <span className="text-lg font-semibold">Yearly Usage</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-semibold">
+                    Yearly Consumption
+                  </span>
+                  <span className="text-sm font-semibold">
+                    {electricityUsage?.yearly.toFixed(2)} kWh/year
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Separator className="my-4" />
+          <h3 className="text-xl font-semibold">Solar Panel Configs</h3>
+          <p className="text-sm text-zinc-700">
+            Using our software we can model different installations to give you
+            an idea how much electricity you can generate from your roof based
+            on different solar installation configurations, i.e. How many solar
+            panels, the power rating of those panels.
+          </p>
+          <p className="text-sm mt-2 text-zinc-700">
+            Select different configurations to see how they impact how much
+            electricity you can generate.
+          </p>
+
+          <div className="flex justify-between mt-3">
+            <div>
+              <Select defaultValue={solarPanels[0].sku}>
+                <SelectTrigger>
+                  <span className="text-sm font-semibold">
+                    Select a configuration
+                  </span>
+                </SelectTrigger>
+                <SelectContent>
+                  <ScrollArea className="h-[280px]">
+                    {solarPanels.map((panel, index) => (
+                      <SelectItem key={index} value={panel.sku}>
+                        <span className="text-sm font-semibold">
+                          {panel.sku}
+                        </span>
+                      </SelectItem>
+                    ))}
+                  </ScrollArea>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       )}
