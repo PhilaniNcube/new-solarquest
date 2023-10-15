@@ -16,9 +16,10 @@ const HeroSection = () => {
             <h1 className="text-2xl lg:text-5xl font-bold text-white max-w-[20ch]">
               Solar Geysers/Water Heating
             </h1>
-            <p className="text-sm mt-3 lg:text-lg font-light text-white max-w-[70ch]">
-              Embrace Solar Geysers: Economical, Sustainable Water Heating
-              Solutions
+            <p className="text-sm mt-3 lg:text-lg font-light text-white max-w-[40ch] lg:max-w-[50ch]">
+              Make a smart, affordable, and eco-friendly move for your home.
+              Embrace the power of the sun and save on your water heating costs
+              with our top-quality solar water heaters/geysers.
             </p>
             <Button className="bg-red-600 text-white rounded-full mt-6">
               Request Quote
