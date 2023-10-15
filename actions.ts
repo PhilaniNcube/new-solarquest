@@ -7,12 +7,14 @@ import { DataResponse, GeocodingResponse } from "./types"
 export async function getSolarData(formData:FormData) {
 
   const schema = z.object({
+    email: z.string().email(),
     address: z.string(),
     monthlyBill: z.coerce.number(),
     offGrid: z.coerce.boolean()
   })
 
   const data = schema.parse({
+    email: formData.get('email'),
     address: formData.get('address'),
     monthlyBill: formData.get('monthlyBill'),
     offGrid: formData.get('offGrid')
