@@ -6,8 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@clerk/clerk-react": "^4.25.2",
-    "@clerk/nextjs": "^4.24.2",
+    "@clerk/clerk-react": "^4.30.5",
+    "@clerk/nextjs": "^4.29.7",
     "@hookform/resolvers": "^3.3.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
@@ -40,7 +40,7 @@
     "@supabase/auth-helpers-nextjs": "latest",
     "@supabase/supabase-js": "latest",
     "@tailwindcss/container-queries": "^0.1.1",
-    "autoprefixer": "10.4.15",
+    "autoprefixer": "10.4.17",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
@@ -48,15 +48,17 @@
     "eslint": "^8.50.0",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.279.0",
-    "next": "latest",
-    "postcss": "8.4.29",
+    "next": "^14.1.0",
+    "next-themes": "^0.2.1",
+    "postcss": "8.4.35",
     "react": "18.2.0",
     "react-day-picker": "^8.8.2",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.46.2",
     "react-quill": "^2.0.0",
+    "sonner": "^1.4.0",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss": "3.3.3",
+    "tailwindcss": "3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2",
     "zod": "^3.22.2",
@@ -64,8 +66,8 @@
   },
   "devDependencies": {
     "@types/node": "20.3.1",
-    "@types/react": "18.2.12",
-    "@types/react-dom": "18.2.5",
+    "@types/react": "18.2.56",
+    "@types/react-dom": "18.2.19",
     "encoding": "^0.1.13"
   }
 }

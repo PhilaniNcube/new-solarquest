@@ -21,7 +21,7 @@ const ProductPageGrid = () => {
                   alt={item.package_name}
                 />
                 <h2 className="text-lg font-bold">{item.package_name}</h2>
-                <h3 className="mt-2 text-xl font-medium text-red-500">{formatter(item.price)}</h3>
+                <h3 suppressHydrationWarning className="mt-2 text-xl font-medium text-red-500">{formatter(item.price)}</h3>
               </motion.div>
             </Link>
           ))}

@@ -14,17 +14,15 @@ const DesktopNavigation =  ({links}:DesktopNavigationProps ) => {
 
   const pathname = usePathname()
 
-
-
   return (
     <div>
       <nav className="items-center hidden py-4 border-b md:flex">
         <div className="container flex items-center justify-between mx-auto">
-          <Image src="/images/logo-red.png" width={2526} height={661} alt="Logo" className="w-44 object-cover" />
+          <Image src="/images/logo-red.png" width={2526} height={661} alt="Logo" className="object-cover w-44" />
           <div className="flex items-center gap-x-4">
             <Button
               type="button"
-              className="items-center text-white rounded-full bg-red-600 flaex gap-x-2"
+              className="items-center text-white bg-red-600 rounded-full flaex gap-x-2"
             >
               <DollarSign size={24} />
               <span>Financing</span>
@@ -39,7 +37,7 @@ const DesktopNavigation =  ({links}:DesktopNavigationProps ) => {
           </div>
         </div>
       </nav>
-      <div className="hidden md:block py-4 bg-red-600">
+      <div className="hidden py-4 bg-red-600 md:block">
         <nav className="container flex items-center justify-between mx-auto font-light text-white">
           {links.map((link) => (
             <Link href={link.href} key={link.href} className="relative text-sm">
