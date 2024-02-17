@@ -1,4 +1,5 @@
 import DesktopNavigation from "./desktop-navigation";
+import MobileNavigation from "./mobile-navigation";
 
 const links = [
   { href: "/", label: "Home" },
@@ -15,6 +16,7 @@ const links = [
 const Navbar = () => {
   return <header>
     <DesktopNavigation links={links} />
+    <MobileNavigation links={links} />
   </header>;
 };
 export default Navbar;

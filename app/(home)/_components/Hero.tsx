@@ -3,14 +3,14 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="relative overflow-clip">
-      <div className="absolute inset-0">
+    <div className="relative overflow-clip bg-slate-600/40">
+      <div className="absolute inset-0 bg-slate-500/30">
         <Image
           src="/images/living-room.webp"
           width={1920}
           height={1080}
           alt="Solar"
-          className="object-cover w-full rounded-md aspect-video"
+          className="object-cover object-right w-full h-full rounded-md lg:object-center lg:aspect-video"
         />
       </div>
       <section className="container relative z-20 grid grid-cols-1 gap-6 py-8 mx-auto lg:grid-cols-2 md:gap-10">
@@ -19,7 +19,7 @@ const Hero = () => {
           <h1 className="text-3xl font-bold uppercase md:text-5xl max-w-[20ch] text-zinc-800">
             Solar INstallations for Off-Grid & Load Shedding
           </h1>
-          <p className="pr-20 mt-5 font-medium text-md text-zinc-600">
+          <p className="pr-20 mt-5 text-lg font-medium text-zinc-950 mix-blend-darken md:text-zinc-600">
             Unlocking Renewable Energy Solutions: High-quality, Affordable Solar
             Installations for a Sustainable Future
           </p>
